@@ -12,7 +12,6 @@
 		"format": "prettier --config .prettierrc --ignore-path .pretttierignore '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write"
 	},
 	"license": "MIT",
-	"type": "module",
 	"_moduleAliases": {
 		"@": "src"
 	},
