@@ -12,11 +12,13 @@ export const counter = async (
 		return await next();
 	}
 
-	const currentCounter = Number((await c.env.KV_COUNTER.get("counter")) || "0");
+	const currentCounter = Number(
+		(await c.env.HONO_PAGES_COUNTER.get("counter")) || "0",
+	);
 	const newCounter = currentCounter + 1;
 
 	c.set("counter", newCounter);
 
-	await c.env.KV_COUNTER.put("counter", String(newCounter));
+	await c.env.HONO_PAGES_COUNTER.put("counter", String(newCounter));
 	await next();
 };

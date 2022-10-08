@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "run-p dev:*",
-		"dev:wrangler": "wrangler pages dev ./public --live-reload --kv KV_BLOG_POSTS KV_COUNTER --persist",
+		"dev:wrangler": "wrangler pages dev ./public --live-reload --kv HONO_PAGES_BLOG_POSTS HONO_PAGES_COUNTER --persist",
 		"dev:esbuild": "esbuild --bundle src/index.tsx --format=esm --watch --outfile=public/_worker.js",
 		"build": "run-p build:*",
 		"build:hono": "esbuild --bundle src/index.tsx --format=esm --outfile=public/_worker.js",

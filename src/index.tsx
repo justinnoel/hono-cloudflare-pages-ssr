@@ -41,7 +41,7 @@ const getPosts = async (namespace: KVNamespace) => {
 };
 
 app.get("/", async (c) => {
-	const posts = await getPosts(c.env.KV_BLOG_POSTS);
+	const posts = await getPosts(c.env.HONO_PAGES_BLOG_POSTS);
 	const counter = Number(c.get("counter") || "1");
 	const envVariables = [
 		{ name: "ENVIRONMENT_VARIABLE_1", value: c.env.ENVIRONMENT_VARIABLE_1 },
@@ -54,18 +54,21 @@ app.get("/", async (c) => {
 });
 
 app.get("/delete-posts", async (c) => {
-	await c.env.KV_BLOG_POSTS.delete("posts");
+	await c.env.HONO_PAGES_BLOG_POSTS.delete("posts");
 
 	return c.redirect("/", 302);
 });
 
 app.get("/generate-posts", async (c) => {
-	const previouslyStoredPosts = await c.env.KV_BLOG_POSTS.get("posts", {
+	const previouslyStoredPosts = await c.env.HONO_PAGES_BLOG_POSTS.get("posts", {
 		type: "json",
 	});
 
 	if (!previouslyStoredPosts) {
-		await c.env.KV_BLOG_POSTS.put("posts", JSON.stringify(importedPosts));
+		await c.env.HONO_PAGES_BLOG_POSTS.put(
+			"posts",
+			JSON.stringify(importedPosts),
+		);
 	}
 
 	return c.redirect("/", 302);
@@ -74,7 +77,7 @@ app.get("/generate-posts", async (c) => {
 app.get("/post/:id{[0-9]+}", async (c) => {
 	const id = c.req.param("id");
 	const counter = Number(c.get("counter") || "1");
-	const post = await getPost({ id, namespace: c.env.KV_BLOG_POSTS });
+	const post = await getPost({ id, namespace: c.env.HONO_PAGES_BLOG_POSTS });
 	if (!post) {
 		return c.notFound();
 	}
