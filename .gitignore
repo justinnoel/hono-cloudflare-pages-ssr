@@ -1,0 +1,7 @@
+// IMPORTANT: For real projects, the `.dev.vars` or `.?.vars` file(s) should be ignored as well.
+.env
+.DS_Store
+.wranger
+node_modules
+public/_worker.js
+*.log

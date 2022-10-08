@@ -1,0 +1,27 @@
+{
+	"name": "hono-cloudflare-pages-ssr",
+	"private": true,
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "run-p dev:*",
+		"dev:wrangler": "wrangler pages dev ./public --live-reload --kv KV_BLOG_POSTS KV_COUNTER --persist",
+		"dev:esbuild": "esbuild --bundle src/index.tsx --format=esm --watch --outfile=public/_worker.js",
+		"build": "run-p build:*",
+		"build:hono": "esbuild --bundle src/index.tsx --format=esm --outfile=public/_worker.js",
+		"deploy": "wrangler pages publish public",
+		"format": "prettier --config .prettierrc --ignore-path .pretttierignore '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write"
+	},
+	"license": "MIT",
+	"_moduleAliases": {
+		"@": "src"
+	},
+	"dependencies": {
+		"hono": "2.2.5"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^3.16.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.7.1",
+		"wrangler": "^2.1.10"
+	}
+}
