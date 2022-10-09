@@ -36,6 +36,12 @@ export const Layout = ({
 				<turbo-frame id="main"> ${children} </turbo-frame>
 				<footer>
 					<p>Built with <a href="https://github.com/honojs/hono">Hono</a></p>
+					<p>
+						Source:
+						<a href="https://github.com/justinnoel/hono-cloudflare-pages-ssr">
+							https://github.com/justinnoel/hono-cloudflare-pages-ssr
+						</a>
+					</p>
 					<p>This website has been viewed ${counter} times.</p>
 				</footer>
 			</body>

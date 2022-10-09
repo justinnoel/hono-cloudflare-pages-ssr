@@ -26,7 +26,13 @@ const description =
 export const Top = ({ counter, envVariables, posts }: TopProps) => (
 	<Layout title="Hono Blog" counter={counter} description={description}>
 		<main>
+			<p>
+				Example of server side rendering (SSR) using Hono hosted by Cloudflare
+				Pages.
+			</p>
+
 			<h2>Posts</h2>
+
 			{posts.length ? (
 				<Fragment>
 					<ul>
