@@ -11,6 +11,10 @@ This project demonstrates:
 - A minimal TypeScript configuration
 - Deploying fixed assets (non-generated) like images, CSS, etc.
 
+## Demo
+
+This project can be viewed at https://hono-pages-ssr.codedemos.dev.
+
 ## General Guidance and Explanation of Code
 
 ### Paths
