@@ -4,10 +4,16 @@ import { JSXNode } from "hono/jsx";
 type LayoutProps = {
 	counter: number;
 	children?: JSXNode;
+	description: string;
 	title: string;
 };
 
-export const Layout = ({ children, counter, title }: LayoutProps) => {
+export const Layout = ({
+	children,
+	counter,
+	description,
+	title,
+}: LayoutProps) => {
 	const cssUrl =
 		"//cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css";
 	return html` <!DOCTYPE html>
@@ -15,10 +21,7 @@ export const Layout = ({ children, counter, title }: LayoutProps) => {
 			<head>
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<meta
-					name="description"
-					content="Example of server side rendereing (SSR) using Hono hosted by Cloudflare Pages."
-				/>
+				<meta name="description" content="${description}" />
 				<title>${title}</title>
 				<link rel="preload" href="${cssUrl}" as="style" />
 				<link rel="stylesheet" href="${cssUrl}" />

@@ -8,7 +8,11 @@ type PagePros = {
 
 export const Page = ({ counter, post }: PagePros) => {
 	return (
-		<Layout title={post.title} counter={counter}>
+		<Layout
+			title={`Hono Blog: ${post.title}`}
+			counter={counter}
+			description={post.description}
+		>
 			<title>{post.title}</title>
 			<main>
 				<h2>{post.title}</h2>

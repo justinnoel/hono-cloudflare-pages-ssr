@@ -7,9 +7,10 @@ import importedPosts from "./data/posts.json";
 import { counter } from "./middleware/counter";
 
 export type Post = {
+	body: string;
+	description: string;
 	id: string;
 	title: string;
-	body: string;
 };
 
 type GetPost = {
