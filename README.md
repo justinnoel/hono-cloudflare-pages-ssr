@@ -15,7 +15,7 @@ This project demonstrates:
 
 ### Paths
 
-The example is configured to use `@` as an alias to the `src` directory. Throughout the code base, files can be import using the `@` alias.
+The example is configured to use `@` as an alias to the `src` directory. Throughout the code base, files can be imported using the `@` alias.
 
 Examples
 
@@ -24,7 +24,7 @@ Examples
 
 ### Environment Variables
 
-Rather than use a `.env` file, this project uses the `.dev.vars` file. All "secrets" or other environment variables should be added to this file. During development, Wrangler automatically makes these variables available to the project in `c.env.`
+Rather than use a `.env` file, this project uses a `.dev.vars` file. All "secrets" or other environment variables should be added to this file. During development, Wrangler automatically makes these variables available to the project in `c.env.`
 
 For real projects, this file should **NOT** be added to your Git repository. It should be added to the `.gitignore` file.
 
@@ -34,7 +34,7 @@ In addition, the `NODE_VERSION` variable should be added with a value of `16` or
 
 Be sure to add the appropriate variables to both the "Preview" and "Production" sections.
 
-If running this project in preview or production results in "Internal Server Error", it is highly likely the variables were not added in "Preview" and/or "Production" or the KV namespace or bindings were not added.
+If running this project in preview or production results in "Internal Server Error", it is highly likely the variables were not added in "Preview" / "Production" or the KV namespaces and bindings were not added.
 
 ### KV Namespaces and Bindings
 
@@ -47,18 +47,18 @@ For production or preview, use the Cloudflare dashboard to create two namespaces
 
 NOTE: The namespaces can be called anything per personal/organizational preferences.
 
-Then, these two new namespaces must be bound to the Pages project. Unless changed throughout the code base, the bindings **must** be named as follows.
+Next, these two new namespaces must be bound to the Pages project. Unless changed throughout the code base, the bindings **must** be named as follows.
 
 - HONO_PAGES_BLOG_POSTS
 - HONO_PAGES_COUNTER
 
 ### Output
 
-All `dev` and `build` processes should to the `public` directory. When the process is built by Cloudflare Pages, the `_worker.js` file is used to run the project from the edge.
+All `dev` and `build` processes output to the `public` directory. When the process is built by Cloudflare Pages, the `_worker.js` file is used to run the project from the edge.
 
 ### Additional Assets
 
-Any assets such as favicon, CSS, images, etc. should be located in the `public` directory. If desired, additional folder nesting can be used for organization purposes.
+Any assets such as favicon, CSS, images, etc. should be located in the `public` directory. If desired, additional folder nesting can be used for better organization.
 
 To reference these assets, use the root path (`/`) along with any other nested paths.
 
@@ -109,7 +109,7 @@ These can be added to the project before the next deployment.
 
 ## Credits
 
-This example project is based on Hono ["blog" example](https://github.com/honojs/examples/tree/main/blog) by [Yusuke Wada](https://github.com/yusukebe).
+This example project is based on the Hono ["blog" example](https://github.com/honojs/examples/tree/main/blog) by [Yusuke Wada](https://github.com/yusukebe).
 
 This example has been modified to support running on Cloudflare Pages based on guidance from [Rishav Sharan](https://github.com/rishavs) in [this pull request](https://app.raindrop.io/my/0/hono/-1/item/454604533/web).
 
