@@ -1,5 +1,5 @@
 // https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements
-// https://github.com/honojs/hono/blob/main/src/middleware/jsx/index.ts
+// Based on https://github.com/honojs/hono/blob/main/src/middleware/jsx/index.ts#L6
 declare namespace JSX {
 	interface IntrinsicElements {
 		// Use `any` instead of `unknown` to avoid "no explicit any".
