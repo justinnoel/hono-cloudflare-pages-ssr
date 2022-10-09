@@ -41,7 +41,7 @@ export const Top = ({ counter, envVariables, posts }: TopProps) => (
 				</Fragment>
 			) : (
 				<Fragment>
-					<p>There are not posts yet. </p>
+					<p>There are no posts yet. </p>
 					<p>
 						Click{" "}
 						<a href="/generate-posts" style="text-decoration: underline">
