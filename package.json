@@ -9,7 +9,7 @@
 		"build": "run-p build:*",
 		"build:hono": "esbuild --bundle src/index.tsx --format=esm --outfile=public/_worker.js",
 		"deploy": "wrangler pages publish public",
-		"format": "prettier --config .prettierrc --ignore-path .pretttierignore '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write"
+		"format": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{json,js,jsx,ts,tsx,css,scss,md}' --write"
 	},
 	"license": "MIT",
 	"_moduleAliases": {
