@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 
-import { Env } from "./types";
 import { Top } from "./pages/Top";
 import { Page } from "./pages/Page";
 import importedPosts from "./data/posts.json";
+import { Env, CustomVariables } from "./types";
 import { counter } from "./middleware/counter";
 
 export type Post = {
@@ -23,7 +23,7 @@ const getPost = async ({ id, namespace }: GetPost) => {
 	return posts.find((post) => post.id == id);
 };
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<{ Bindings: Env; Variables: CustomVariables }>();
 
 app.use("*", async (c, next) => {
 	return counter(c, next);
@@ -43,7 +43,7 @@ const getPosts = async (namespace: KVNamespace) => {
 
 app.get("/", async (c) => {
 	const posts = await getPosts(c.env.HONO_PAGES_BLOG_POSTS);
-	const counter = Number(c.get("counter") || "1");
+	const counter = c.get("counter") || 1;
 	const envVariables = [
 		{ name: "ENVIRONMENT_VARIABLE_1", value: c.env.ENVIRONMENT_VARIABLE_1 },
 		{ name: "ENVIRONMENT_VARIABLE_2", value: c.env.ENVIRONMENT_VARIABLE_2 },
@@ -77,7 +77,9 @@ app.get("/generate-posts", async (c) => {
 
 app.get("/post/:id{[0-9]+}", async (c) => {
 	const id = c.req.param("id");
-	const counter = Number(c.get("counter") || "1");
+
+	const counter = c.get("counter") || 1;
+
 	const post = await getPost({ id, namespace: c.env.HONO_PAGES_BLOG_POSTS });
 	if (!post) {
 		return c.notFound();

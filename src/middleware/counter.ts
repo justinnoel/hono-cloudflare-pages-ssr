@@ -13,7 +13,7 @@ export const counter = async (
 	}
 
 	const currentCounter = Number(
-		(await c.env.HONO_PAGES_COUNTER.get("counter")) || "0",
+		(await c.env.HONO_PAGES_COUNTER.get("counter")) || 0,
 	);
 	const newCounter = currentCounter + 1;
 
